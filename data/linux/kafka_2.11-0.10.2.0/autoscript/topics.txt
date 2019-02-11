@@ -1,0 +1,5 @@
+GVEDGE_ITMS_ITEMS_V
+GVEDGE_ITMS_PERSONS
+ITMSBaseCompanyDomainEventFeed
+ITMSItineraryDomainCommandFeed
+ItineraryTimezoneState

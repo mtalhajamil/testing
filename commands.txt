@@ -5,4 +5,24 @@ docker run -it -v ./data:/bin ubuntu
 docker run --rm -it -v D:\VistaJet\automation\data\linux:/linux --net="host" java
 
 
-kafka-topics --zookeeper localhost:2181 --list
+../bin/kafka-topics.sh --zookeeper localhost:2181 --list | grep -c -w 'hunting' 
+
+../bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic GVEDGE_ITMS_ITEMS_V
+
+cat topics.txt | xargs -I % sh -c '../bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic % --replication-factor 1 --partitions 1'
+
+
+../bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic GVEDGE_ITMS_ITEMS_V,GVEDGE_ITMS_PERSONS,ITMSBaseCompanyDomainEventFeed,ITMSItineraryDomainCommandFeed,ItineraryTimezoneState
+
+../bin/kafka-topics.sh
+
+
+GVEDGE_ITMS_ITEMS_V,GVEDGE_ITMS_PERSONS,ITMSBaseCompanyDomainEventFeed,ITMSItineraryDomainCommandFeed,ItineraryTimezoneState
+
+
+../bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic hunting
+
+
+.\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic hunting --from-beginning
+
+./kafka-topics.bat --delete --zookeeper localhost:2181 --topic hunting
