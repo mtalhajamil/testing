@@ -1,0 +1,8 @@
+http://jira/browse/GI-1476
+
+docker run -it -v ./data:/bin ubuntu
+
+docker run --rm -it -v D:\VistaJet\automation\data\linux:/linux --net="host" java
+
+
+kafka-topics --zookeeper localhost:2181 --list

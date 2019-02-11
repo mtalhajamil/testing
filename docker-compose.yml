@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  linux:
+    container_name: linux_gv
+    image: ubuntu:14.04
+    volumes:
+      - D:\VistaJet\automation\data\linux:/linux
