@@ -38,3 +38,17 @@ docker run -e CONNECT_REST_ADVERTISED_HOST_NAME=127.0.0.1 -e CONNECT_REST_ADVERT
 is marked for deletion
 Created topic
 already exists
+
+
+cat testdata.txt | ../bin/kafka-console-producer.sh --broker-list localhost:9092 --topic hunting
+
+
+../bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic hunting --from-beginning > datalist.txt
+
+
+../bin/kafka-avro-console-consumer --topic ITMSCompanyDomainEventFeed --property schema.registry.url=http://kafkaqa-eu-west-1a-01.vistajetaws.local:28081/ -bootstrap-server kafkaqa-eu-west-1a-01.vistajetaws.local:32000,kafkaqa-eu-west-1b-01.vistajetaws.local:32000,kafkaqa-eu-west-1c-01.vistajetaws.local:32000,kafkaqa-eu-west-1b-03.vistajetaws.local:32000 --from-beginning --property print.timestamp=true --property print.key=true --consumer.config ssl/qa_ssl.properties --timeout-ms 1000 &> topicdata.txt
+
+
+cat data_topic | xargs -I % sh -c "../bin/kafka-avro-console-consumer --topic $ --property schema.registry.url=http://kafkaqa-eu-west-1a-01.vistajetaws.local:28081/ -bootstrap-server kafkaqa-eu-west-1a-01.vistajetaws.local:32000,kafkaqa-eu-west-1b-01.vistajetaws.local:32000,kafkaqa-eu-west-1c-01.vistajetaws.local:32000,kafkaqa-eu-west-1b-03.vistajetaws.local:32000 --from-beginning --property print.timestamp=true --property print.key=true --consumer.config ssl/qa_ssl.properties --timeout-ms 1000 > data/$.txt"
+
+Processed a total of 23515 messages
