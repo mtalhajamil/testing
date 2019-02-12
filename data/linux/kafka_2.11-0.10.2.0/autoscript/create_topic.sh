@@ -7,7 +7,6 @@ echo "<<<<<<<<<<<<<<<<<<<< Started Executing Create Topic Script >>>>>>>>>>>>>>>
 filename="create_topic"
 [ -e $filename ] && rm $filename
 echo "Topics file name: " $filename
-touch $filename
 echo ${kafka_topics_create} | tr ',' '\n' > $filename
 
 command=${kafka_create_topics_command/__topicsfilename__/${filename}}

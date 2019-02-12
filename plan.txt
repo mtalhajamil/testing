@@ -1,7 +1,0 @@
-1. Enviornment setup for development.
-2. Create topics script.
-3. Delete topics script.
-4. Stream reset script.
-5. offset reset script.
-6. Delete connector.
-7. Create new connector.
