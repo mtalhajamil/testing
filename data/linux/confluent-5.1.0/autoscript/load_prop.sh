@@ -11,7 +11,7 @@ then
   do
     key=$(echo $key | tr '.' '_')
     eval ${key}=\${value}
-    echo ${key} "= ${!key}"
+    #echo ${key} "= ${!key}"
   done < "$file"
 else
   echo "$file not found."
